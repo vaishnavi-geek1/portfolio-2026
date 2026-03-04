@@ -1,0 +1,244 @@
+@import "tailwindcss";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: #020617; /* slate-950 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Light dot-grid background similar to reference */
+  background-color: #fdfdfd;
+  background-image: radial-gradient(#e2e8f0 0.6px, transparent 0.6px),
+    radial-gradient(#e2e8f0 0.6px, transparent 0.6px);
+  background-position: 0 0, 8px 8px;
+  background-size: 16px 16px;
+}
+
+.section-container {
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .section-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp 0.6s ease-out both;
+}
+
+.fade-up-delay-1 {
+  animation: fadeUp 0.75s ease-out both;
+}
+
+.fade-up-delay-2 {
+  animation: fadeUp 0.9s ease-out both;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease-out both;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease-out both;
+}
+
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.float-y {
+  animation: floatY 2.4s ease-in-out infinite;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.pop-in {
+  animation: popIn 0.6s ease-out both;
+}
+
+@keyframes blinkGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(15, 23, 42, 0.0);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(15, 23, 42, 0.12);
+  }
+}
+
+.btn-blink {
+  animation: blinkGlow 1.8s ease-out infinite;
+}
+
+@keyframes typingCursor {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 1px;
+  margin-left: 2px;
+  height: 1em;
+  background-color: #020617;
+  animation: typingCursor 1s steps(1) infinite;
+}
+
+@keyframes skillRise {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.skills-grid .skill-card {
+  opacity: 0;
+  animation: skillRise 0.6s ease-out forwards;
+}
+
+.skills-grid .skill-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.skills-grid .skill-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.skills-grid .skill-card:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.skills-grid .skill-card:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.skills-grid .skill-card:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+.skills-grid .skill-card:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+.skills-grid .skill-card:nth-child(7) {
+  animation-delay: 0.35s;
+}
+
+.skills-grid .skill-card:nth-child(8) {
+  animation-delay: 0.4s;
+}
+
+.skills-grid .skill-card:nth-child(9) {
+  animation-delay: 0.45s;
+}
+
+.skills-grid .skill-card:nth-child(10) {
+  animation-delay: 0.5s;
+}
+
+.skills-grid .skill-card:nth-child(11) {
+  animation-delay: 0.55s;
+}
+
+.skills-grid .skill-card:nth-child(12) {
+  animation-delay: 0.6s;
+}
+
+.projects-grid .project-card {
+  opacity: 0;
+  transform: translateY(24px) scale(0.96);
+  animation: popIn 0.7s ease-out forwards;
+}
+
+.projects-grid .project-card:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.projects-grid .project-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.projects-grid .project-card:nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+
+
