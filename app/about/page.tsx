@@ -7,7 +7,7 @@ export default function AboutPage() {
 
       <div className="space-y-4 max-w-3xl fade-up-delay-1">
         <h1 className="text-3xl sm:text-4xl font-semibold text-slate-900">
-          Fullstack <span className="text-blue-600 underline">Developer</span>,
+          Frontend <span className="text-blue-600 underline">Developer</span>,
           Based In India.
         </h1>
         <p className="text-sm sm:text-base text-slate-700">
