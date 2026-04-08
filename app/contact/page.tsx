@@ -1,6 +1,6 @@
  "use client";
 
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
@@ -10,7 +10,7 @@ export default function ContactPage() {
     "idle"
   );
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setStatus("loading");
 
@@ -24,7 +24,8 @@ export default function ContactPage() {
       });
 
       if (!res.ok) {
-        throw new Error("Request failed");
+        const data = (await res.json().catch(() => ({}))) as { error?: string };
+        throw new Error(data.error || "Request failed");
       }
 
       setStatus("success");

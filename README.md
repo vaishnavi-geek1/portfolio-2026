@@ -52,3 +52,31 @@ You can change the file name and href if you prefer a different path.
 
 Every push to the selected branch will automatically trigger a new deployment.
 
+## Contact form email setup (Hostinger SMTP)
+
+The contact form sends email through the API route at `app/api/contact/route.ts` using `nodemailer`.
+
+1. Copy `.env.example` to `.env.local`:
+
+```bash
+cp .env.example .env.local
+```
+
+2. Update `.env.local` with your Hostinger mailbox values:
+   - `SMTP_HOST=smtp.hostinger.com`
+   - `SMTP_PORT=465` (SSL) or `587` (TLS)
+   - `SMTP_USER=your-full-email@domain.com`
+   - `SMTP_PASS=your-mailbox-password`
+   - `SMTP_FROM=your-full-email@domain.com`
+   - `CONTACT_TO_EMAIL=where-you-want-to-receive-messages@domain.com`
+
+3. Restart the dev server after editing env values:
+
+```bash
+npm run dev
+```
+
+Notes:
+- Keep these credentials only in `.env.local` and your deployment environment variable settings.
+- The API route automatically uses secure SMTP when `SMTP_PORT=465`.
+

@@ -12,19 +12,34 @@ export async function POST(request: Request) {
       );
     }
 
+    const smtpHost = process.env.SMTP_HOST;
+    const smtpPort = Number(process.env.SMTP_PORT || "587");
+    const smtpUser = process.env.SMTP_USER;
+    const smtpPass = (process.env.SMTP_PASS || "").replace(/\s+/g, "");
+    const contactToEmail = process.env.CONTACT_TO_EMAIL || smtpUser;
+
+    if (!smtpHost || !smtpUser || !smtpPass || !contactToEmail) {
+      console.error("Missing SMTP configuration");
+      return NextResponse.json(
+        { error: "Email service is not configured" },
+        { status: 500 }
+      );
+    }
+
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: false,
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpPort === 465,
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+        user: smtpUser,
+        pass: smtpPass,
       },
     });
 
     await transporter.sendMail({
-      from: process.env.SMTP_FROM || process.env.SMTP_USER,
-      to: "guptavaishnavi671@gmail.com",
+      from: process.env.SMTP_FROM || smtpUser,
+      to: contactToEmail,
+      replyTo: email,
       subject: `New portfolio contact from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
     });
